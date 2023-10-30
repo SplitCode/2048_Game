@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./assets/img/favicon.ico">
+    <title>2048</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header">
+          <h1 class="game-name">2048</h1>
+
+        <div class="scores">
+            <div class="score-container best-score">
+              Best:
+              <div class="scoreCount">
+                <div id="bestScore">0</div>
+              </div>
+            </div>
+            <div class="score-container">
+              Score:
+              <div class="scoreCount">
+                <div class="score">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+    </header>
+
+    <main class="main">
+
+<!-- //-------------------------- -->
+<div class="pop-up pop-up-1 non-visible" id="game-over">
+    <div class="pop-up-bg">
+      <div class="pop-up-top">
+      <p class="pop-up-title">Game Over!</p>
+    </div>
+    <div class="result">
+        <p class="result-text">Your score is:&nbsp<span class="pop-upScore score">0</span></p>
+      </div>
+
+    <div class="records-list">
+        <p class="records-text bold">Records:</p>
+        <ol class="recordsList">
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+        </ol>
+      </div>
+      <button id="again-button" class="again-button add-button">Try again!</button>
+    </div>
+    </div>
+<!-- //------------------------------- -->
+
+<!-- //-------------------------- -->
+<div class="pop-up pop-up-2 non-visible" id="game-win">
+    <div class="pop-up-bg">
+      <div class="pop-up-top">
+      <p class="pop-up-title">Congratulations!</p>
+    </div>
+    <div class="result">
+        <p class="result-text">You've reached 2048!</p>
+      </div>
+
+    <div class="records-list">
+        <p class="records-text bold">Records:</p>
+        <ol class="recordsList">
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+        </ol>
+      </div>
+      <button id="win-button" class="again-button add-button">Try again!</button>
+    </div>
+    </div>
+<!-- //------------------------------- -->
+
+<!-- //-------------------------- -->
+<div class="pop-up pop-up-3 non-visible">
+    <div class="pop-up-bg">
+
+        <div class="records-list">
+        <p class="pop-up-title">Records</p>
+        <ol class="recordsList">
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+        </ol>
+      </div>
+      <button id="close-button" class="close-button add-button">Close!</button>
+    </div>
+    </div>
+<!-- //------------------------------- -->
+
+      <div class="game-field"></div>
+
+    </main>
+
+    <div class="buttons-container">
+        <button id="records-button" class="main-button glow">Records</button>
+        <button id="new-game-button" class="main-button glow">New Game</button>
+      </div>
+
+    <div class="about-game">
+        <p><strong>HOW TO PLAY:</strong><br> Use your arrow keys to move the tiles. When two tiles slide into each other, they merge into one! Join the tiles and get to <strong>2048!</strong></p>
+      </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer">
+          <a class="footer-link" href="https://github.com/SplitCode/"
+            ><img
+              class="github-icon"
+              src="./assets/img/svg/github_icon.svg"
+              alt="github-icon"
+              width="26"
+              height="26"
+            />
+            <p class="visit">Visit my GitHub</p></a
+          >
+          <p class="year">© 2023</p>
+          <a href="https://rs.school/js/"
+            ><img
+              src="./assets/img/svg/rss.svg"
+              alt="RS School Icon"
+              class="rss-logo"
+          /></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
