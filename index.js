@@ -82,9 +82,9 @@ field.addRandomSquare().linkPlate(new Plate(gameField));
 setInput();
 
 function setInput() {
-  window.addEventListener("keydown", handleInput, { once: true });
+  window.addEventListener("keydown", handleInput);
 // для тачскрина-----------------------------------
-  window.addEventListener("touchstart", handleTouchStart, { once: true, passive: false });
+  window.addEventListener("touchstart", handleTouchStart, { passive: true });
 }
 
 function stopInput() {
@@ -280,7 +280,7 @@ function handleTouchStart(e) {
       await handleInput(deltaY > 0 ? "ArrowDown" : "ArrowUp");
     }
     setInput();
-  }, { once: true })
+  })
 }
 
 window.updateScore = function(points) {
