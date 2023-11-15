@@ -83,6 +83,13 @@ setInput();
 
 function setInput() {
   window.addEventListener("keydown", handleInput, { once: true });
+// для тачскрина-----------------------------------
+  window.addEventListener("touchstart", handleTouchStart, { once: true, passive: false });
+}
+
+function stopInput() {
+  window.removeEventListener("keydown", handleKeydown);
+  window.removeEventListener("touchstart", handleTouchStart);
 }
 
 window.addEventListener('keydown', function (e) {
@@ -91,7 +98,13 @@ window.addEventListener('keydown', function (e) {
   }
 });
 
+function handleKeydown(e) {
+  handleInput(e.key);
+}
+
 async function handleInput(e) {
+  stopInput();
+
   switch (e.key) {
     case "ArrowUp":
       if (!possibleMoveUp()) {
@@ -147,22 +160,22 @@ async function handleInput(e) {
 
 async function moveUp() {
   await movePlates(field.columns);
-  moveSound.play();
+  // moveSound.play();
 }
 
 async function moveDown() {
   await movePlates(field.reverseColumns);
-  moveSound.play();
+  // moveSound.play();
 }
 
 async function moveLeft() {
   await movePlates(field.rows);
-  moveSound.play();
+  // moveSound.play();
 }
 
 async function moveRight() {
   await movePlates(field.reverseRows);
-  moveSound.play();
+  // moveSound.play();
 }
 
 async function movePlates(groupedSquares) {
@@ -240,6 +253,34 @@ function possibleMoveInGroup(group) {
     const targetSquare = group[index - 1];
     return targetSquare.canMake(square.linkedPlate);
   });
+}
+
+function handleTouchStart(e) {
+  stopInput();
+  e.preventDefault();
+
+  let touchStartData = e.changedTouches[0];
+  let touchStartDate = new Date;
+
+  window.addEventListener("touchend", async evt => {
+    evt.preventDefault();
+    let touchEndData = evt.changedTouches[0];
+
+    if (new Date - touchStartDate > 500) {
+      setInput();
+      return;
+    }
+
+    let deltaX = touchEndData.pageX - touchStartData.pageX;
+    let deltaY = touchEndData.pageY - touchStartData.pageY;
+
+    if (Math.abs(deltaX) >= 55) {
+      await handleInput(deltaX > 0 ? "ArrowRight" : "ArrowLeft")
+    } else if (Math.abs(deltaY) >= 55) {
+      await handleInput(deltaY > 0 ? "ArrowDown" : "ArrowUp");
+    }
+    setInput();
+  }, { once: true })
 }
 
 window.updateScore = function(points) {
