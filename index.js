@@ -84,7 +84,7 @@ setInput();
 function setInput() {
   window.addEventListener("keydown", handleInput);
 // для тачскрина-----------------------------------
-  window.addEventListener("touchstart", handleTouchStart, { passive: true });
+  window.addEventListener("touchstart", handleTouchStart, { passive: false });
 }
 
 function stopInput() {
